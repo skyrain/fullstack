@@ -1,5 +1,5 @@
 /node_modules
 /app/*.map
 /app/*.js	  
-/typings	  
+/typings/	  
 /out/
