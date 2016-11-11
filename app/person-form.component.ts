@@ -10,5 +10,17 @@ import { Person } from './Person';
 })
 
 export class PersonFormComponent {
+    public submitted: boolean = false;
+    public person: Person = new Person('tianyu', 'qiu');
+    public active: boolean = true;
+
+
+    public newPerson() {
+        this.person = new Person('', '');
+        this.active = false;
+        setTimeout(() => { this.active = true }, 0);
+    }
+
+    public onSubmit() { this.submitted = true; }
 
 }

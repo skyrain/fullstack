@@ -9,9 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var Person_1 = require('./Person');
 var PersonFormComponent = (function () {
     function PersonFormComponent() {
+        this.submitted = false;
+        this.person = new Person_1.Person('tianyu', 'qiu');
+        this.active = true;
     }
+    PersonFormComponent.prototype.newPerson = function () {
+        var _this = this;
+        this.person = new Person_1.Person('', '');
+        this.active = false;
+        setTimeout(function () { _this.active = true; }, 0);
+    };
+    PersonFormComponent.prototype.onSubmit = function () { this.submitted = true; };
     PersonFormComponent = __decorate([
         core_1.Component({
             // use relative path
