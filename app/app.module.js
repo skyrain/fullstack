@@ -14,6 +14,7 @@ var forms_1 = require('@angular/forms');
 var app_routing_1 = require('./app.routing');
 var app_component_1 = require('./app.component');
 var dashboard_component_1 = require('./dashboard.component');
+var person_form_component_1 = require('./person-form.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -27,6 +28,7 @@ var AppModule = (function () {
             declarations: [
                 app_component_1.AppComponent,
                 dashboard_component_1.DashboardComponent,
+                person_form_component_1.PersonFormComponent
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]
