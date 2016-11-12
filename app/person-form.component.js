@@ -14,6 +14,7 @@ var PersonFormComponent = (function () {
     function PersonFormComponent() {
         this.submitted = false;
         this.person = new Person_1.Person('tianyu', 'qiu');
+        // should exist better way to do this
         this.active = true;
     }
     PersonFormComponent.prototype.newPerson = function () {

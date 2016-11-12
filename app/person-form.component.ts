@@ -12,12 +12,13 @@ import { Person } from './Person';
 export class PersonFormComponent {
     public submitted: boolean = false;
     public person: Person = new Person('tianyu', 'qiu');
+    // should exist better way to do this
     public active: boolean = true;
 
 
     public newPerson() {
         this.person = new Person('', '');
-        this.active = false;
+        this.active = false;        
         setTimeout(() => { this.active = true }, 0);
     }
 
