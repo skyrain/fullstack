@@ -7,12 +7,20 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard.component';
 import { PersonFormComponent } from './person-form.component';
 
+//restful service
+// config
+import { HttpModule } from '@angular/http';
+// add rxjs operator to enchance Observable implementation
+import './rxjs-extensions';
+// custom service
+import {PersonService} from './person.service';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
-        routing
+        routing,
+        HttpModule
     ],
     declarations: [
         AppComponent,
@@ -20,6 +28,7 @@ import { PersonFormComponent } from './person-form.component';
         PersonFormComponent
     ],
     providers: [
+        PersonService,
     ],
     bootstrap: [AppComponent]
 })
