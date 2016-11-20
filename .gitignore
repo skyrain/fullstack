@@ -1,5 +1,6 @@
 /client/node_modules
 /client/app/*.map
-/client/app/*.js	  
-/client/typings/	  
+/client/app/*.js
+/client/typings/
 /client/out/
+/client/*.log
