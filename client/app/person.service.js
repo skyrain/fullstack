@@ -15,7 +15,7 @@ require('rxjs/add/operator/toPromise');
 var PersonService = (function () {
     function PersonService(http) {
         this.http = http;
-        this.personsUrl = 'app/persons';
+        this.personsUrl = '192.168.1.105:8080';
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     PersonService.prototype.handleError = function (error) {
@@ -23,8 +23,11 @@ var PersonService = (function () {
         return Promise.reject(error.message || error);
     };
     //restful call
-    PersonService.prototype.getPersons = function () {
-        return this.http.get(this.personsUrl).toPromise().then(function (response) { return response.json().data; }).catch(this.handleError);
+    PersonService.prototype.getPerson = function () {
+        return this.http.get(this.personsUrl + "/person")
+            .toPromise()
+            .then(function (response) { return response.json().data; })
+            .catch(this.handleError);
     };
     PersonService = __decorate([
         core_1.Injectable(), 

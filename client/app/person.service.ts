@@ -8,7 +8,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class PersonService {
-    private personsUrl = 'app/persons';
+    private personsUrl = '192.168.1.105:8080';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }
@@ -19,7 +19,10 @@ export class PersonService {
     }
 
     //restful call
-    getPersons(): Promise<Person[]> {
-        return this.http.get(this.personsUrl).toPromise().then(response => response.json().data as Person[]).catch(this.handleError);
+    getPerson(): Promise<Person> {
+        return this.http.get(`${this.personsUrl}/person`)
+            .toPromise()
+            .then(response => response.json().data as Person)
+            .catch(this.handleError);
     }
 }

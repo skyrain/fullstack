@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Person } from './Person';
+import { PersonService } from './person.service'
 
 @Component({
     // use relative path
@@ -15,13 +16,20 @@ export class PersonFormComponent {
     // should exist better way to do this
     public active: boolean = true;
 
+    constructor(private personSvc: PersonService) { }
+
 
     public newPerson() {
         this.person = new Person('', '');
-        this.active = false;        
+        this.active = false;
         setTimeout(() => { this.active = true }, 0);
     }
 
-    public onSubmit() { this.submitted = true; }
+    public onSubmit() {
+        this.submitted = true;
+
+        //test restful api
+        this.personSvc.getPerson().then(person => console.log(person.firstName));
+    }
 
 }
