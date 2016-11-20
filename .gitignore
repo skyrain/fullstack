@@ -1,5 +1,5 @@
-/node_modules
-/app/*.map
-/app/*.js	  
-/typings/	  
-/out/
+/client/node_modules
+/client/app/*.map
+/client/app/*.js	  
+/client/typings/	  
+/client/out/
