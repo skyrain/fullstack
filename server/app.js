@@ -6,7 +6,7 @@ app.use(cors())
 
 app.set('json spaces', 2);
 
-app.get('/person', function (req, res) {
+app.get('/persons', function (req, res) {
 	console.log("hit /person api");
 	// wrap json into "data" field for security reason
 	res.json({ "data": [{ "firstName": "tianyu", "lastName": "qiu" }] })
