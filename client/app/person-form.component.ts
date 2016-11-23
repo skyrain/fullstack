@@ -16,6 +16,8 @@ export class PersonFormComponent {
     // should exist better way to do this
     public active: boolean = true;
 
+    private errorMessage: string;
+
     constructor(private personSvc: PersonService) { }
 
 
@@ -29,7 +31,9 @@ export class PersonFormComponent {
         this.submitted = true;
 
         //test restful api
-        this.personSvc.getPerson().then(person => console.log(person.firstName));
+        this.personSvc.getPerson().subscribe(
+            person => console.log(person.firstName),
+            error => this.errorMessage = <any>error);
     }
 
 }

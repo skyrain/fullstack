@@ -26,9 +26,10 @@ var PersonFormComponent = (function () {
         setTimeout(function () { _this.active = true; }, 0);
     };
     PersonFormComponent.prototype.onSubmit = function () {
+        var _this = this;
         this.submitted = true;
         //test restful api
-        this.personSvc.getPerson().then(function (person) { return console.log(person.firstName); });
+        this.personSvc.getPerson().subscribe(function (person) { return console.log(person.firstName); }, function (error) { return _this.errorMessage = error; });
     };
     PersonFormComponent = __decorate([
         core_1.Component({

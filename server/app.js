@@ -4,9 +4,12 @@ var app = express()
 
 app.use(cors())
 
+app.set('json spaces', 2);
+
 app.get('/person', function (req, res) {
 	console.log("hit /person api");
-	res.send({ "firstName": "tianyu", "lastName": "qiu" })
+	// wrap json into "data" field for security reason
+	res.json({ "data": [{ "firstName": "tianyu", "lastName": "qiu" }] })
 })
 
 app.listen(8080, function () {

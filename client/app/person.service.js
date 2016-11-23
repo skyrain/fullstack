@@ -15,19 +15,32 @@ require('rxjs/add/operator/toPromise');
 var PersonService = (function () {
     function PersonService(http) {
         this.http = http;
-        this.personsUrl = '192.168.1.105:8080';
+        //!!! need "http://" in front
+        this.personsUrl = 'http://192.168.1.105:8080';
+        //send data needs header info
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
-    PersonService.prototype.handleError = function (error) {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
-    };
-    //restful call
     PersonService.prototype.getPerson = function () {
         return this.http.get(this.personsUrl + "/person")
-            .toPromise()
-            .then(function (response) { return response.json().data; })
+            .map(this.extractData)
             .catch(this.handleError);
+    };
+    PersonService.prototype.extractData = function (res) {
+        var body = res.json();
+        return body.data || {};
+    };
+    PersonService.prototype.handleError = function (error) {
+        var errMsg;
+        if (error instanceof http_1.Response) {
+            var body = error.json() || '';
+            var err = body.error || JSON.stringify(body);
+            errMsg = error.status + " - " + (error.statusText || '') + " " + err;
+        }
+        else {
+            errMsg = error.message ? error.message : error.toString();
+        }
+        console.error(errMsg);
+        return Observable.throw(errMsg);
     };
     PersonService = __decorate([
         core_1.Injectable(), 
