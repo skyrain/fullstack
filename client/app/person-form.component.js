@@ -29,7 +29,7 @@ var PersonFormComponent = (function () {
         var _this = this;
         this.submitted = true;
         //test restful api
-        this.personSvc.getPerson().subscribe(function (person) { return console.log(person.firstName); }, function (error) { return _this.errorMessage = error; });
+        this.personSvc.getPersons().subscribe(function (persons) { return console.log(persons[0].firstName); }, function (error) { return _this.errorMessage = error; });
     };
     PersonFormComponent = __decorate([
         core_1.Component({

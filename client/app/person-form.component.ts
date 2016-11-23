@@ -31,8 +31,8 @@ export class PersonFormComponent {
         this.submitted = true;
 
         //test restful api
-        this.personSvc.getPerson().subscribe(
-            person => console.log(person.firstName),
+        this.personSvc.getPersons().subscribe(
+            persons => console.log(persons[0].firstName),
             error => this.errorMessage = <any>error);
     }
 

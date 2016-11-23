@@ -20,8 +20,8 @@ var PersonService = (function () {
         //send data needs header info
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
-    PersonService.prototype.getPerson = function () {
-        return this.http.get(this.personsUrl + "/person")
+    PersonService.prototype.getPersons = function () {
+        return this.http.get(this.personsUrl + "/persons")
             .map(this.extractData)
             .catch(this.handleError);
     };

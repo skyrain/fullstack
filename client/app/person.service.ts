@@ -14,8 +14,8 @@ export class PersonService {
 
     constructor(private http: Http) { }
 
-    getPerson(): Observable<Person> {
-        return this.http.get(`${this.personsUrl}/person`)
+    getPersons(): Observable<Person[]> {
+        return this.http.get(`${this.personsUrl}/persons`)
             .map(this.extractData)
             .catch(this.handleError);
     }
