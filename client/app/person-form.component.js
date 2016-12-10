@@ -29,7 +29,7 @@ var PersonFormComponent = (function () {
         var _this = this;
         this.submitted = true;
         this.personSvc.addPerson(this.person)
-            .subscribe(console.log("aaaa"), function (person) { return console.log(person.firstName + person.lastName); }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (person) { return console.log(person.firstName + person.lastName); }, function (error) { return _this.errorMessage = error; });
     };
     return PersonFormComponent;
 }());

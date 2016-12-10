@@ -32,7 +32,6 @@ export class PersonFormComponent {
 
         this.personSvc.addPerson(this.person)
             .subscribe(
-                console.log("aaaa"),
             person => console.log(person.firstName + person.lastName),
             error => this.errorMessage = <any>error);
     }
