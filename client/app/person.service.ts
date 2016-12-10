@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Person } from './person';
 
 // use enhanced Observable implementation toPromise method
@@ -11,8 +11,16 @@ export class PersonService {
     private personsUrl = 'http://192.168.1.105:8080';
     //send data needs header info
     private headers = new Headers({ 'Content-Type': 'application/json' });
+    private options = new RequestOptions({ headers: this.headers });
+
 
     constructor(private http: Http) { }
+
+    addPerson(person: Person): Observable<Person> {
+        return this.http.post(`${this.personsUrl}/addPerson`, { person }, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
 
     getPersons(): Observable<Person[]> {
         return this.http.get(`${this.personsUrl}/persons`)

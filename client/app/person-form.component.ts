@@ -30,9 +30,10 @@ export class PersonFormComponent {
     public onSubmit() {
         this.submitted = true;
 
-        //test restful api
-        this.personSvc.getPersons().subscribe(
-            persons => console.log(persons[0].firstName),
+        this.personSvc.addPerson(this.person)
+            .subscribe(
+                console.log("aaaa"),
+            person => console.log(person.firstName + person.lastName),
             error => this.errorMessage = <any>error);
     }
 

@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
 // use enhanced Observable implementation toPromise method
-require('rxjs/add/operator/toPromise');
+require("rxjs/add/operator/toPromise");
 var PersonService = (function () {
     function PersonService(http) {
         this.http = http;
@@ -19,7 +19,13 @@ var PersonService = (function () {
         this.personsUrl = 'http://192.168.1.105:8080';
         //send data needs header info
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        this.options = new http_1.RequestOptions({ headers: this.headers });
     }
+    PersonService.prototype.addPerson = function (person) {
+        return this.http.post(this.personsUrl + "/addPerson", { person: person }, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     PersonService.prototype.getPersons = function () {
         return this.http.get(this.personsUrl + "/persons")
             .map(this.extractData)
@@ -42,11 +48,11 @@ var PersonService = (function () {
         console.error(errMsg);
         return Observable.throw(errMsg);
     };
-    PersonService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], PersonService);
     return PersonService;
 }());
+PersonService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], PersonService);
 exports.PersonService = PersonService;
 //# sourceMappingURL=person.service.js.map

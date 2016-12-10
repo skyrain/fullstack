@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var Person_1 = require('./Person');
-var person_service_1 = require('./person.service');
+var core_1 = require("@angular/core");
+var Person_1 = require("./Person");
+var person_service_1 = require("./person.service");
 var PersonFormComponent = (function () {
     function PersonFormComponent(personSvc) {
         this.personSvc = personSvc;
@@ -28,19 +28,19 @@ var PersonFormComponent = (function () {
     PersonFormComponent.prototype.onSubmit = function () {
         var _this = this;
         this.submitted = true;
-        //test restful api
-        this.personSvc.getPersons().subscribe(function (persons) { return console.log(persons[0].firstName); }, function (error) { return _this.errorMessage = error; });
+        this.personSvc.addPerson(this.person)
+            .subscribe(console.log("aaaa"), function (person) { return console.log(person.firstName + person.lastName); }, function (error) { return _this.errorMessage = error; });
     };
-    PersonFormComponent = __decorate([
-        core_1.Component({
-            // use relative path
-            moduleId: module.id,
-            selector: 'person-form',
-            templateUrl: 'person-form.component.html'
-        }), 
-        __metadata('design:paramtypes', [person_service_1.PersonService])
-    ], PersonFormComponent);
     return PersonFormComponent;
 }());
+PersonFormComponent = __decorate([
+    core_1.Component({
+        // use relative path
+        moduleId: module.id,
+        selector: 'person-form',
+        templateUrl: 'person-form.component.html'
+    }),
+    __metadata("design:paramtypes", [person_service_1.PersonService])
+], PersonFormComponent);
 exports.PersonFormComponent = PersonFormComponent;
 //# sourceMappingURL=person-form.component.js.map
