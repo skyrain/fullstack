@@ -35,7 +35,7 @@ app.post('/addPerson', function (req, res) {
     console.log("hit /addPerson api");
 
     // Get the documents collection
-    var collection = db.collection('person');
+    var collection = db.get().collection('person');
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;
 
