@@ -7,9 +7,11 @@
             "request": "launch",
             "url": "http://localhost:3000/dashboard",
             "sourceMaps": true,
-            // open a separate chrome
-            "userDataDir": "${workspaceRoot}/out/chrome",
-            "webRoot": "${workspaceRoot}"
+            //Need userDataDir to launch debug mode.
+            "userDataDir": "${workspaceRoot}/client/out/chrome",
+            /* need to make 'webRoot' points to code relating to angular 2.
+             Otherwise vs code will not recognize breakpoint.*/
+            "webRoot": "${workspaceRoot}/client"
         },
         {
             "name": "Attach to Chrome, with sourcemaps",
@@ -17,7 +19,7 @@
             "request": "attach",
             "port": 9222,
             "sourceMaps": true,
-            "webRoot": "${workspaceRoot}"
+            "webRoot": "${workspaceRoot}/client"
         }
     ]
 }
