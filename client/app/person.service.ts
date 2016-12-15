@@ -30,6 +30,7 @@ export class PersonService {
 
     private extractData(res: Response) {
         let body = res.json();
+        /* 'data' comes from the server response json format*/
         return body.data || {};
     }
 

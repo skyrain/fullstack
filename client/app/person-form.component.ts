@@ -13,7 +13,7 @@ import { PersonService } from './person.service'
 export class PersonFormComponent {
     public submitted: boolean = false;
     public person: Person = new Person('tianyu', 'qiu');
-    // should exist better way to do this
+    //TODO should exist better way to do this
     public active: boolean = true;
 
     private errorMessage: string;
