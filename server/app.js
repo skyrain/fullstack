@@ -12,7 +12,6 @@ db.connect('mongodb://localhost:27017/database', function(err) {
         console.log('Unable to connect to Mongo.')
         process.exit(1)
     } else {
-        //config express.js
         app.listen(8080, function() {
             console.log('express server listening on port 8080!')
         })
